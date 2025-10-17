@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Vanshika ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(circle at top left, #ffb6c1, #ff9aa2, #ffb3b3, #ffe6e6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+  }
+
+  /* Soft glow animation background */
+  .glow-bg {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,182,193,0.4) 0%, rgba(255,182,193,0) 70%);
+    animation: pulse 8s infinite alternate;
+    z-index: 0;
+  }
+
+  @keyframes pulse {
+    from { transform: scale(1); opacity: 0.7; }
+    to { transform: scale(1.2); opacity: 1; }
+  }
+
+  .content {
+    text-align: center;
+    z-index: 2;
+    padding: 20px;
+    animation: fadeIn 3s ease-in-out;
+  }
+
+  h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 80px;
+    color: #fff0f5;
+    text-shadow: 0 0 20px #ff7f9c, 0 0 40px #ff9aa2;
+    animation: glow 3s infinite alternate;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 20px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 0 0 10px rgba(255,255,255,0.4);
+    animation: fadeInUp 3s ease-in-out;
+  }
+
+  .signature {
+    margin-top: 40px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    color: #ffe4eb;
+    text-shadow: 0 0 15px #ff9aa2;
+    animation: fadeIn 4s ease-in-out;
+  }
+
+  @keyframes glow {
+    from { text-shadow: 0 0 20px #ffb6c1; }
+    to { text-shadow: 0 0 40px #ff9aa2, 0 0 80px #ffc3a0; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Floating hearts */
+  .heart {
+    position: absolute;
+    bottom: 0;
+    color: #fff0f5;
+    font-size: 18px;
+    animation: floatUp 6s infinite ease-in;
+    z-index: 1;
+  }
+
+  @keyframes floatUp {
+    0% { bottom: 0; opacity: 0; transform: translateX(0); }
+    50% { opacity: 1; }
+    100% { bottom: 100vh; opacity: 0; transform: translateX(20px); }
+  }
+
+  /* Play button */
+  #playBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3;
+    background: rgba(255, 192, 203, 0.8);
+    color: #fff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(255, 182, 193, 0.5);
+    transition: all 0.3s;
+  }
+
+  #playBtn:hover {
+    background: #ff9aa2;
+    transform: scale(1.1);
+  }
+
+</style>
+</head>
+
+<body>
+  <div class="glow-bg"></div>
+
+  <div class="content">
+    <h1>Happy Birthday Vanshika ❤️</h1>
+    <p>
+      My dearest Vanshika,<br><br>
+      You are the poetry my heart recites every day, the calm to my chaos, and the light that makes my world glow.  
+      On your special day, I wish you laughter as sweet as your smile,  
+      dreams as bright as your eyes, and love that never fades.  
+      <br><br>
+      You are my favorite part of every day. 💖
+    </p>
+    <div class="signature">— Yours, Forever 💫</div>
+  </div>
+
+  <button id="playBtn">🎵 Play Soft Piano</button>
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/02/23/audio_7bcbcf730e.mp3?filename=beautiful-piano-melody-11391.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    // Floating hearts
+    const heartSymbols = ['💖','💞','💕','💓','❤️','💗'];
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = heartSymbols[Math.floor(Math.random()*heartSymbols.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+      heart.style.animationDuration = (5 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 8000);
+    }
+    setInterval(createHeart, 400);
+
+    // Music control
+    const playBtn = document.getElementById('playBtn');
+    const bgMusic = document.getElementById('bgMusic');
+
+    playBtn.addEventListener('click', () => {
+      bgMusic.play();
+      playBtn.textContent = "🎶 Music Playing";
+      playBtn.disabled = true;
+      playBtn.style.opacity = "0.7";
+    });
+  </script>
+</body>
+</html>
